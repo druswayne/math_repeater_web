@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Checkbox Form</title>
+    <style>
+        .sub-options {
+            display: none;
+            margin-left: 20px;
+        }
+        #id_user{display:none}
+    </style>
+</head>
+<body>
+<h1>Dynamic Checkbox Form</h1>
+<form action="/save/" method="post">
+    <label for="time">Время тренировки(чч:мм):</label> <input type="time" id="time" name="time" required><br>
+
+    {% for klass in data %}
+    <label>
+        <input type="checkbox" name="klass_{{klass}}" id="klass_{{klass}}"
+               onclick="toggleSubOptions('klass_{{klass}}-suboptions')">
+        {{klass}} класс
+    </label>
+    <div id="klass_{{klass}}-suboptions" class="sub-options">
+        {% for tema in data[klass] %}
+        <label>
+            <input type="checkbox" name="klass_{{klass}}-suboption{{loop.index0}}">
+            {{tema}}
+        </label><br>
+        {% endfor %}
+    </div>
+    <br>
+    {% endfor %}
+
+
+    <button type="submit">Submit</button>
+    <br>
+    <input id="id_user" name="id_user" value="{{id_user}}"><br>
+</form>
+<script>
+     function toggleSubOptions(id) { const subOptions = document.getElementById(id); subOptions.style.display = subOptions.style.display === 'none' ? 'block' : 'none'; } document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => { checkbox.addEventListener('change', (event) => { const targetId = event.target.id + '-suboptions'; const subOptions = document.getElementById(targetId); if (subOptions) { subOptions.style.display = event.target.checked ? 'block' : 'none'; } }); });
+</script>
+
+</body>
+</html>
