@@ -49,15 +49,16 @@ def save_form():
     chat_id = int(id_user)
     file_path = f"static/{id_user}.json"
     resp = send_message_with_button('Для завершения настройки нажмите кнопку "завершить"', 'завершить', 'end_setting', bot_token, chat_id)
-    return resp
+    return render_template('save.html')
 
 
 @app.route('/', methods=['POST'])
 def get_form1():
+
     data = json.loads(request.get_json())
     with open(f'static/{data["id_user"]}.json', 'w', encoding='utf-8') as file:
         file.write(json.dumps(data))
     return 'ok'
 
 
-app.run(debug=True)
+app.run(debug=True, port=1234)

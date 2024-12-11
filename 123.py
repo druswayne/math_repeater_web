@@ -1,8 +1,8 @@
 import requests
 import json
 
-data = json.dumps({'id_user':731866035, "tems":{'7':['a','b','c']}})
-res = requests.post('http://127.0.0.1:5000/', json=data)
+data = json.dumps({'id_user':731866035, "tems":{'7':['бла бла бла','бла бла бла','бла бла бла'],'8':['бла бла бла','бла бла бла','бла бла бла']}})
+res = requests.post('http://127.0.0.1:1234/', json=data)
 
 
 
