@@ -28,7 +28,7 @@
         <label >
             <input  type="checkbox" name="klass_{{klass}}" id="klass_{{klass}}"
                    onclick="toggleSubOptions('klass_{{klass}}-suboptions')">
-            {{klass}} класс
+            {{klass.split('_')[-1]}} класс
         </label>
         <div id="klass_{{klass}}-suboptions" class="sub-options form-group">
             {% for tema in data[klass] %}
