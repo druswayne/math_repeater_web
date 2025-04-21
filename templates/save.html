@@ -1,12 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Настройки сохранены</title>
-     <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
-
+    <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .success-container {
+            text-align: center;
+            padding: 40px;
+            background: var(--card-background);
+            max-width: 600px;
+            margin: 50px auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .success-icon {
+            font-size: 48px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background-color: var(--accent-color);
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow);
+        }
+    </style>
 </head>
 <body>
-<h1>Вернитесь обратно в бота и следуйте инструкциям</h1>
+    <div class="success-container">
+        <div class="success-icon">✓</div>
+        <h1>Настройки успешно сохранены!</h1>
+        <p>Вернитесь в Telegram-бота и следуйте дальнейшим инструкциям.</p>
+        <a href="https://t.me/your_bot" class="back-button">Вернуться в бот</a>
+    </div>
 </body>
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 
     <title>Настройка параметров</title>
     <style>
@@ -18,50 +19,50 @@
 
 </head>
 <body>
-<h1>Настройка параметров</h1>
-<form action="/save/" method="post"  id="form_kek">
-    <label for="time">Время тренировки(чч:мм):</label> <br><input type="time" id="time" name="time" required><br>
-    <br>
-    {% for klass in data %}
-    <div class="top_check">
-    <label >
-        <input  type="checkbox" name="klass_{{klass}}" id="klass_{{klass}}"
-               onclick="toggleSubOptions('klass_{{klass}}-suboptions')">
-        {{klass}} класс
-    </label>
-    <div id="klass_{{klass}}-suboptions" class="sub-options form-group">
-        {% for tema in data[klass] %}
-        <label>
-            <div class="sub_temka">
-            <input type="checkbox" name="klass_{{klass}}-suboption{{loop.index0}}" class="lox">
-            {{tema}}
-                </div>
+    <h1>Настройка параметров</h1>
+    <form action="/save/" method="post"  id="form_kek">
+        <label for="time">Время тренировки(чч:мм):</label> <br><input type="time" id="time" name="time" required><br>
+        <br>
+        {% for klass in data %}
+        <div class="top_check">
+        <label >
+            <input  type="checkbox" name="klass_{{klass}}" id="klass_{{klass}}"
+                   onclick="toggleSubOptions('klass_{{klass}}-suboptions')">
+            {{klass}} класс
         </label>
+        <div id="klass_{{klass}}-suboptions" class="sub-options form-group">
+            {% for tema in data[klass] %}
+            <label>
+                <div class="sub_temka">
+                <input type="checkbox" name="klass_{{klass}}-suboption{{loop.index0}}" class="lox">
+                {{tema}}
+                    </div>
+            </label>
 
-        {% endfor %}
-    </div>
+            {% endfor %}
         </div>
-    <br>
-    {% endfor %}
+        </div>
+        <br>
+        {% endfor %}
 
 
-    <button type="submit">Сохранить</button>
-    <br>
-    <input id="id_user" name="id_user" value="{{id_user}}"><br>
-</form>
-<script>
-    function toggleSubOptions(id) { const subOptions = document.getElementById(id); subOptions.style.display = subOptions.style.display === 'none' ? 'block' : 'none'; } document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => { checkbox.addEventListener('change', (event) => { const targetId = event.target.id + '-suboptions'; const subOptions = document.getElementById(targetId); if (subOptions) { subOptions.style.display = event.target.checked ? 'block' : 'none'; } }); });
-</script>
-<script>
-        document.getElementById('form_kek').addEventListener('submit', function(event) {
-            const checkboxes = document.querySelectorAll('input[class="lox"]');
-            const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
-
-            if (!anyChecked) {
-                event.preventDefault();
-                alert('Пожалуйста, выберите хотя бы одну опцию.');
-            }
-        });
+        <button type="submit">Сохранить</button>
+        <br>
+        <input id="id_user" name="id_user" value="{{id_user}}"><br>
+    </form>
+    <script>
+        function toggleSubOptions(id) { const subOptions = document.getElementById(id); subOptions.style.display = subOptions.style.display === 'none' ? 'block' : 'none'; } document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => { checkbox.addEventListener('change', (event) => { const targetId = event.target.id + '-suboptions'; const subOptions = document.getElementById(targetId); if (subOptions) { subOptions.style.display = event.target.checked ? 'block' : 'none'; } }); });
     </script>
+    <script>
+            document.getElementById('form_kek').addEventListener('submit', function(event) {
+                const checkboxes = document.querySelectorAll('input[class="lox"]');
+                const anyChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+
+                if (!anyChecked) {
+                    event.preventDefault();
+                    alert('Пожалуйста, выберите хотя бы одну опцию.');
+                }
+            });
+        </script>
 </body>
 </html>
