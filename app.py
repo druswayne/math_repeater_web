@@ -1,11 +1,12 @@
 import json
-
+import os
 from flask import Flask, render_template, request
 import requests
 
 app = Flask(__name__)
 
-
+concurrent_path = os.path.dirname(__file__)
+os.chdir(concurrent_path)
 def send_message_with_button(text, button_text, button_url, bot_token, chat_id):
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
     payload = {"chat_id": chat_id, "text": text,
