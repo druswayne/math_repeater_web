@@ -46,7 +46,7 @@ def save_form():
     out_data = {"time": time_repeate, "tems": save_data}
     with open(f'static/{id_user}.json', 'w', encoding='utf-8') as file:
         file.write(json.dumps(out_data))
-    bot_token = '7385714840:AAHlyQdM85RjBl7pklB0mAGlU7d6AYy1950'
+    bot_token = '7860615605:AAGGvJlJVkZWzi9gYy3XsPIkxOIyRUYs54w'
     chat_id = int(id_user)
     file_path = f"static/{id_user}.json"
     resp = send_message_with_button('Для завершения настройки нажмите кнопку "завершить"', 'завершить', 'end_setting', bot_token, chat_id)
