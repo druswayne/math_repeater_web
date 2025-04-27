@@ -6,6 +6,7 @@
     <title>Настройки сохранены</title>
     <link rel="stylesheet" href="{{url_for('static', filename='/css/style.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         .success-container {
             text-align: center;
@@ -46,13 +47,7 @@
         <div class="success-icon">✓</div>
         <h1>Настройки успешно сохранены!</h1>
         <p>Вернитесь в Telegram-бота и следуйте дальнейшим инструкциям.</p>
-        <button onclick="window.close()" class="back-button">Вернуться в бот</button>
+        <button onclick="window.Telegram.WebApp.close()" class="back-button">Закрыть</button>
     </div>
-    <script>
-        // Добавляем обработчик для закрытия окна
-        document.querySelector('.back-button').addEventListener('click', function() {
-            window.close();
-        });
-    </script>
 </body>
 </html>
